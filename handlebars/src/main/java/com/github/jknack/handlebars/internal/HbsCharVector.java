@@ -17,14 +17,15 @@ public final class HbsCharVector {
    */
   HbsCharVector(char[] initial) {
     this.data = initial;
+    this.size = initial.length;
   }
 
   /**
-   * Get the backing char[]
+   * Get the present elements from the backing char[]
    * @return A char[]
    */
   public char[] data() {
-    return this.data;
+    return Arrays.copyOf(data, this.size);
   }
 
   /**
@@ -51,7 +52,7 @@ public final class HbsCharVector {
    */
   public void addChar(char val) {
     if (this.size + 1 > this.data.length) grow(1);
-    this.data[this.data.length] = val;
+    this.data[this.size] = val;
     this.size += 1;
   }
 
